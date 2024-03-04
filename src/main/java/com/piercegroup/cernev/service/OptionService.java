@@ -1,5 +1,7 @@
 package com.piercegroup.cernev.service;
 
+import com.piercegroup.cernev.dto.CreateOptionRequest;
+import com.piercegroup.cernev.entity.Attribute;
 import com.piercegroup.cernev.entity.Option;
 import com.piercegroup.cernev.repository.OptionRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +13,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OptionService {
   private final OptionRepository optionRepository;
+  private final AttributeService attributeService;
 
-  public Option save(Option option) {
+  public Option save(CreateOptionRequest request) {
+    Option option = new Option();
+    option.setCode(request.getCode());
+    Attribute attribute = attributeService.findByCode(request.getAttributeCode());
+    option.setAttribute(attribute);
+    option.setSortOrder(request.getSortOrder());
+    option.setLabels(request.getLabels());
     return optionRepository.save(option);
   }
 

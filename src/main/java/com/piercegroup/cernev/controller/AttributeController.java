@@ -1,5 +1,6 @@
 package com.piercegroup.cernev.controller;
 
+import com.piercegroup.cernev.dto.CreateAttributeRequest;
 import com.piercegroup.cernev.entity.Attribute;
 import com.piercegroup.cernev.service.AttributeService;
 import lombok.RequiredArgsConstructor;
@@ -25,12 +26,12 @@ public class AttributeController {
   }
 
   @PostMapping
-  public Attribute save(Attribute attribute) {
+  public Attribute save(@RequestBody CreateAttributeRequest attribute) {
     return attributeService.save(attribute);
   }
 
   @PutMapping
-  public Attribute update(Attribute attribute) {
+  public Attribute update(@RequestBody Attribute attribute) {
     return attributeService.update(attribute);
   }
 

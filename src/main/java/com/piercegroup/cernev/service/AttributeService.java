@@ -1,6 +1,8 @@
 package com.piercegroup.cernev.service;
 
+import com.piercegroup.cernev.dto.CreateAttributeRequest;
 import com.piercegroup.cernev.entity.Attribute;
+import com.piercegroup.cernev.exception.CustomException;
 import com.piercegroup.cernev.repository.AttributeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,10 @@ import java.util.List;
 public class AttributeService {
   private final AttributeRepository attributeRepository;
 
-  public Attribute save(Attribute attribute) {
+  public Attribute save(CreateAttributeRequest request) {
+    Attribute attribute = new Attribute();
+    attribute.setCode(request.getCode());
+    attribute.setLabels(request.getLabels());
     return attributeRepository.save(attribute);
   }
 
@@ -26,6 +31,10 @@ public class AttributeService {
 
   public List<Attribute> findAll() {
     return attributeRepository.findAll();
+  }
+
+  public Attribute findByCode(String code) {
+    return attributeRepository.findByCode(code).orElseThrow(() -> new CustomException("Attribute not found"));
   }
 
   public void deleteById(Long id) {
