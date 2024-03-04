@@ -14,11 +14,14 @@ public class Attribute {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
+
   @Column(unique = true)
   private String code;
+
   @OneToMany(mappedBy = "attribute", cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonManagedReference
   private List<Option> options;
+
   @ElementCollection
   @CollectionTable(name = "attribute_labels")
   @MapKeyColumn(name = "language")

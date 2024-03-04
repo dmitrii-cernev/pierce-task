@@ -1,8 +1,10 @@
 package com.piercegroup.cernev.service;
 
 import com.piercegroup.cernev.dto.CreateOptionRequest;
+import com.piercegroup.cernev.dto.UpdateOptionRequest;
 import com.piercegroup.cernev.entity.Attribute;
 import com.piercegroup.cernev.entity.Option;
+import com.piercegroup.cernev.exception.CustomException;
 import com.piercegroup.cernev.repository.OptionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,7 +39,10 @@ public class OptionService {
     optionRepository.deleteById(id);
   }
 
-  public Option update(Option option) {
+  public Option update(Long id, UpdateOptionRequest request) {
+    Option option = optionRepository.findById(id).orElseThrow(() -> new CustomException("Option not found"));
+    option.setSortOrder(request.getSortOrder());
+    option.setLabels(request.getLabels());
     return optionRepository.save(option);
   }
 }

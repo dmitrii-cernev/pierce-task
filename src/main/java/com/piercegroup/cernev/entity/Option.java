@@ -15,10 +15,12 @@ public class Option {
   private Long id;
   private String code;
   private Integer sortOrder;
+
   @ManyToOne
   @JoinColumn(name = "attribute_id", referencedColumnName = "id", nullable = false)
   @JsonBackReference
   private Attribute attribute;
+
   @ElementCollection
   @CollectionTable(name = "option_labels")
   @MapKeyColumn(name = "language")

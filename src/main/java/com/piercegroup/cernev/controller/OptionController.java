@@ -1,6 +1,7 @@
 package com.piercegroup.cernev.controller;
 
 import com.piercegroup.cernev.dto.CreateOptionRequest;
+import com.piercegroup.cernev.dto.UpdateOptionRequest;
 import com.piercegroup.cernev.entity.Option;
 import com.piercegroup.cernev.service.OptionService;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +31,9 @@ public class OptionController {
     return optionService.save(option);
   }
 
-  @PutMapping
-  public Option update(@RequestBody Option option) {
-    return optionService.update(option);
+  @PutMapping("/{id}")
+  public Option update(@PathVariable Long id, @RequestBody UpdateOptionRequest updateOptionRequest) {
+    return optionService.update(id, updateOptionRequest);
   }
 
   @DeleteMapping("/{id}")

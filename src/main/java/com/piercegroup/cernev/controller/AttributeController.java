@@ -1,6 +1,7 @@
 package com.piercegroup.cernev.controller;
 
 import com.piercegroup.cernev.dto.CreateAttributeRequest;
+import com.piercegroup.cernev.dto.UpdateAttributeRequest;
 import com.piercegroup.cernev.entity.Attribute;
 import com.piercegroup.cernev.service.AttributeService;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +31,9 @@ public class AttributeController {
     return attributeService.save(attribute);
   }
 
-  @PutMapping
-  public Attribute update(@RequestBody Attribute attribute) {
-    return attributeService.update(attribute);
+  @PutMapping("/{id}")
+  public Attribute update(@PathVariable Long id, @RequestBody UpdateAttributeRequest attribute) {
+    return attributeService.update(id, attribute);
   }
 
   @DeleteMapping("/{id}")
