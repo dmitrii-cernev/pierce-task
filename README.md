@@ -1,5 +1,20 @@
 # Pierce Test Task for Cernev
 
+## Task overview
+
+Produce JSON with appropriate structure using exmple data provided.
+
+Each file contains one line with explanation of format used in it.
+
+Think about format, how those files are connected etc.
+
+If you have troubles with creating appropriate model please let us know - we will provide some help which we divided
+into tiers.
+
+EXTRA:
+
+Create REST API for this structure (using Spring Boot for example).
+
 ## JSON Model
 
 Below you can see example of JSON model
@@ -12,8 +27,7 @@ Below you can see example of JSON model
       "labels": {
         "label-it_IT": "Numero in confezioni dal fornitore",
         "label-en_GB": "Number in Package from Supplier",
-        "label-en_IE": "Number in Package from Supplier",
-        ...
+        "label-en_IE": "Number in Package from Supplier"
       },
       "options": []
     },
@@ -22,8 +36,7 @@ Below you can see example of JSON model
       "labels": {
         "label-it_IT": "Tagliecasco",
         "label-en_GB": "Helmet Sizes",
-        "label-en_IE": "Helmet Sizes",
-        ...
+        "label-en_IE": "Helmet Sizes"
       },
       "options": [
         {
@@ -31,23 +44,19 @@ Below you can see example of JSON model
           "labels": {
             "label-es_ES": "35 mm",
             "label-nl_NL": "35 mm",
-            "label-nl_BE": "35 mm",
-            ...
+            "label-nl_BE": "35 mm"
           },
           "sort_order": 0
         },
         {
           "code": "40mm",
           "labels": {
-            "label-es_ES": "40 mm",
-            ...
+            "label-es_ES": "40 mm"
           },
           "sort_order": 1
-        },
-        ...
+        }
       ]
-    },
-    ...
+    }
   ]
 }
 
